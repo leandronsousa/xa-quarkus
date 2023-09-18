@@ -19,8 +19,6 @@ import org.jboss.narayana.jta.jms.TransactionHelperImpl;
 @Startup
 public class MQConfig {
 
-    private ConnectionFactory connectionFactory;
-
     @Inject
     private TransactionManager transactionManager;
 
@@ -36,8 +34,6 @@ public class MQConfig {
         factory.setHostName("localhost");
         factory.setPort(1414);
         factory.setTransportType(WMQConstants.WMQ_CM_CLIENT);
-
-        connectionFactory = factory;
 
         TransactionHelperImpl helper = new TransactionHelperImpl(transactionManager);
 
