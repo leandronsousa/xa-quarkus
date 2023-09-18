@@ -15,17 +15,11 @@ import java.util.List;
 @ApplicationScoped
 public class MessageJms {
 
-//    @Inject
-//    @Default
-//    private MQConfig mqConfig;
-
     @Inject
     private ConnectionFactory factory;
 
     @Transactional(Transactional.TxType.REQUIRED)
     public List<Message> consume() throws JMSException {
-
-//        ConnectionFactory factory = mqConfig.factory();
 
         List<Message> ret = new ArrayList<>();
 

@@ -17,7 +17,6 @@ import org.jboss.narayana.jta.jms.TransactionHelperImpl;
 
 @Singleton
 @Startup
-@DependsOn("TransactionHelper")
 public class MQConfig {
 
     private ConnectionFactory connectionFactory;
