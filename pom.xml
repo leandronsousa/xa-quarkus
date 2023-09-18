@@ -35,10 +35,10 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
-    <dependency>
+    <!--<dependency>
       <groupId>org.amqphub.quarkus</groupId>
       <artifactId>quarkus-qpid-jms</artifactId>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-orm</artifactId>
@@ -46,6 +46,16 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-narayana-jta</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.mq</groupId>
+      <artifactId>com.ibm.mq.jakarta.client</artifactId>
+      <version>9.3.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.mq</groupId>
+      <artifactId>com.ibm.mq.allclient</artifactId>
+      <version>9.3.3.1</version>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

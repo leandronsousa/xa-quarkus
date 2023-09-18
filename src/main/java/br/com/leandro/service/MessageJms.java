@@ -15,33 +15,39 @@ import java.util.List;
 @ApplicationScoped
 public class MessageJms {
 
+//    @Inject
+//    @Default
+//    private MQConfig mqConfig;
+
     @Inject
-    private ConnectionFactory cf;
+    private ConnectionFactory factory;
 
     @Transactional(Transactional.TxType.REQUIRED)
     public List<Message> consume() throws JMSException {
 
+//        ConnectionFactory factory = mqConfig.factory();
+
         List<Message> ret = new ArrayList<>();
 
-        try (JMSContext context = cf.createContext(JMSContext.AUTO_ACKNOWLEDGE)) {
+        try (JMSContext context = factory.createContext();) {
             JMSConsumer consumer = context.createConsumer(context.createQueue("DEV.QUEUE.1"));
 
             while (true) {
                 jakarta.jms.Message m = consumer.receiveNoWait();
 
                 if (m == null)
-                    break;
+                        break;
 
-                String text = m.getStringProperty("text");
-                String id = m.getStringProperty("id");
+                    String text = m.getStringProperty("text");
+                    String id = m.getStringProperty("id");
 
-                Message message = new Message();
-                message.setText(text);
-                message.setId(id);
+                    Message message = new Message();
+                    message.setText(text);
+                    message.setId(id);
 
-                ret.add(message);
+                    ret.add(message);
+                }
             }
-        }
 
         return ret;
 
